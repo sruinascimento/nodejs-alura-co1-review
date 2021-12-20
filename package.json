@@ -1,0 +1,28 @@
+{
+  "name": "nodejs-alura-co1-review",
+  "version": "1.0.0",
+  "description": "## Revisão do 1º Curso de formação nodejs da alura",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sruiNascimento/nodejs-alura-co1-review.git"
+  },
+  "author": "Rui Nascimento",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sruiNascimento/nodejs-alura-co1-review/issues"
+  },
+  "homepage": "https://github.com/sruiNascimento/nodejs-alura-co1-review#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "joi": "^17.5.0",
+    "moment": "^2.29.1",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15"
+  }
+}
