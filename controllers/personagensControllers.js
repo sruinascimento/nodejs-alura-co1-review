@@ -61,7 +61,31 @@ module.exports = {
     },
 
     async updatePersonagemById(req, res) {
+        const id = parseInt(req.params.id);
+        const valores = req.body;
 
+        const sql = 'UPDATE personagens SET ? WHERE id = ?';
+        if (valores.data) {
+            valores.data = moment(valores.data, 'DD/MM/YYYY').format('YYYY-MM-DD hh:mm:ss');
+        }
+        conexao.query(sql, [valores, id], (err, result) => {
+            if (err) {
+                return res.status(400).json(erro);
+            }
+            return res.status(200).send(result);
+        })
+    },
+
+    async deletePersonagemById(req, res) {
+        const id = parseInt(req.params.id);
+
+        const sql = 'DELETE FROM personagens WHERE id = ?';
+        conexao.query(sql, id, (err, result) => {
+            if (err) {
+                return res.status(400).json(err);
+            }
+            return res.status(200).json(result);
+        });
     }
 }
 
