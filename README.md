@@ -96,9 +96,9 @@ Nome do banco de dados que conterá as tabelas a serem acessadas
 
 ### 🎲 Rodando o Back End
 
-<p> $ npm start </p>
+<p> $ npm run start </p>
 
-## O servidor iniciará na porta configurada no dotenv, como configurei na porta 333, acesse <http://localhost:3333>
+ O servidor iniciará na porta configurada no dotenv, como configurei na porta 333, acesse <http://localhost:3333>
 
 ### Teste
 
