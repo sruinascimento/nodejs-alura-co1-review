@@ -1,5 +1,5 @@
 const conexao = require('../connection/conexao');
-//const schemaValidacaoPersonagem = require('./validacao');
+const schemaValidacaoPersonagem = require('./validacao');
 const formatarData = require('./formatarData');
 
 module.exports = {
@@ -22,9 +22,78 @@ module.exports = {
         personagem.titulo = req.body.titulo;
         personagem.time = req.body.time;
         personagem.sexo = req.body.sexo; 
+        personagem.cla = req.body.cla;
 
-        var dataFormatada = formatarData(req.body.dataNascimento);
+        console.log('>>>> Req: ', req.body);
         
+        console.log('>>>> Personagem: ', personagem);
+        const {error, value} = schemaValidacaoPersonagem.validate(personagem);
+
+        console.log('>>>> error: ', error);
+        console.log('>>>> values: ', value);
+
+        if (error) {
+            return res.status(400).json(error);
+        } 
+        if (!error && value) {
+            const sql = 'INSERT INTO personagens SET ?';
+            conexao.query(sql,personagem,( err, result) => {
+                if (err) {
+                    console.log('>>> deu ruim', err);
+                    return res.status(400).json(err);
+                }
+                return res.status(201).json(result);
+            });
+        }
+            
+        
+    },
+
+    async getPersonagensById(req, res) {
+        const id = parseInt(req.params.id); 
+        const sql = 'SELECT * FROM personagens WHERE id = ?';
+        conexao.query(sql, id, (err, result) => {
+            if (err) {
+                return res.status(400).json(err);
+            }
+            return res.status(200).json(result)
+        })
+    },
+
+    async updatePersonagemById(req, res) {
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         /* personagem
             .nome = nome
@@ -47,18 +116,3 @@ module.exports = {
             }   
             (nome, dataNascimento, cla, natureza, titulo, time, sexo)
             */
-        personagem.dataNascimento = dataFormatada;
-        console.log('>>>> Personagem: ', personagem);
-
-            
-        const sql = 'INSERT INTO personagens VALUES ?';
-        const valores =  [personagem.nome, personagem.dataNascimento, personagem.natureza, personagem.titulo, personagem.time, personagem.sexo];
-        conexao.query(sql,personagem,( err, result) => {
-            if (err) {
-                console.log('>>> deu ruim', err);
-                return res.status(400).json(err);
-            }
-            return res.status(201).json(result);
-        });
-    },
-}
