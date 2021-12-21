@@ -108,12 +108,66 @@ Nome do banco de dados que conterá as tabelas a serem acessadas
 
 Nessa rota você inserir com o método post
 
-Segue abaixo um exemplo de formulário URL encoded
-
+Segue abaixo um exemplo de objeto json a ser inserido
+<p>
+ {</br>
+    "nome": "Naruto",</br>
+    "dataNascimento": "10/10/1999",</br>
+    "cla": "Uzumaki",</br>
+    "natureza": "Vento",</br>
+    "titulo": "Genin",</br>
+    "time": 7,</br>
+    "sexo": "M"</br>
+ }   
+</p>
 
 
 #### Read
 
 - http:// localhost:3333/personagens
 
+Nessa rota você inserir com o método GET
+
 Essa rota retornará um objeto json {} com a lista de todos personagens cadastro no banco de dados.
+
+
+#### Update
+
+- http:// localhost:3333/personagens/1
+
+Nessa rota você inserir com o método PATCH
+
+Segue abaixo um objeto json para modificar o personagem com id 1
+
+<p>
+ {</br>
+    "nome": "NARUTO",</br>
+ }   
+</p>
+
+Modificamos apenas o nome Naruto para NARUTO, caso quisse modificar mais atributos, bastava passar como no json
+
+
+#### DELETE
+
+- http:// localhost:3333/personagens/1
+
+Nessa rota você inserir com o método DELETE
+
+Isso fará com que seja apagado o personagem com id 1
+
+#### READ com id
+
+- http:// localhost:3333/personagens/1
+
+Nessa rota você inserir com o método GET
+
+Isso fará com que você obtenha apenas o personagem do ID passado no link, nesse caso 1.
+
+
+# Sobre 
+
+## Hi, I'm Rui!!! 😄
+- I'm student at the University UFPA - TUCURUÍ/PA 🌎 
+- Majoring in Computer Engineering - 6th / 10th period 👨‍💻 👨‍🎓 
+- studying: Python, HTML, CSS, Javascript, SQL, Mongo and NodeJS 💻 📔
