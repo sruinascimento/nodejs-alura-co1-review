@@ -20,7 +20,7 @@ Tabela de conteúdos
 - [x] Cadastro de personagens
 - [x] Leitura de todos personagens
 - [X] Atualização de Personagem
-- [X] Esclusão de Personagem
+- [X] Exclusão de Personagem
 
 ### Pré-requisitos
 - express
